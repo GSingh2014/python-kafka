@@ -18,9 +18,13 @@ docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-topics --descr
 
 ## Install miniconda - it will create virtual env "%UserProfile%\venv" - install further packages in this virtual env
 cd %UserProfile%
+
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe', 'mc3.exe') }"
+
 start /wait "" mc3.exe /InstallationType=JustMe /AddToPath=0 /RegisterPython=0 /NoRegistry=0 /S /D=%UserProfile%\anaconda3
+
 %UserProfile%\anaconda3\Scripts\activate.bat
+
 conda install -y anaconda=5.0.1 conda-build _ipyw_jlab_nb_ext_conf
 
 ## Add to PATH
