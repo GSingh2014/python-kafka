@@ -59,7 +59,8 @@ class echo:
             data = self.app.request(random.choice(routes), method=random.choice(methods))
             self.logger.info("Successfully polled browser data")
             print(data)
-            self.myKafka.send_raw_data(data=data['data'].decode("utf-8") + ":" + data['status'])
+            self.myKafka.send_raw_data("".join(self.myKafka.topic),
+                                       data=data['data'].decode("utf-8") + ":" + data['status'])
             # time.sleep(10.0 - ((time.time() - starttime) % 300.0))
 
 
