@@ -9,6 +9,6 @@ class MyKafkaProducer(object):
             bootstrap_servers=kafka_brokers
         )
 
-    def send_raw_data(self, data):
-        self.producer.send("browser-topic", data)
+    def send_raw_data(self, topic, data):
+        self.producer.send(topic, data)
         self.producer.flush()
