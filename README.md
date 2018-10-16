@@ -13,3 +13,15 @@ docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-topics --creat
 docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-topics --list --zookeeper zookeeper:2182
 
 docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-topics --describe --topic browser-topic --zookeeper zookeeper:2182
+
+# Setup Anaconda
+
+## Install miniconda - it will create virtual env "%UserProfile%\venv" - install further packages in this virtual env
+cd %UserProfile%
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe', 'mc3.exe') }"
+start /wait "" mc3.exe /InstallationType=JustMe /AddToPath=0 /RegisterPython=0 /NoRegistry=0 /S /D=%UserProfile%\anaconda3
+%UserProfile%\anaconda3\Scripts\activate.bat
+conda install -y anaconda=5.0.1 conda-build _ipyw_jlab_nb_ext_conf
+
+## Add to PATH
+set PATH=C:\ProgramData\Oracle\Java\javapath;c:\oracle\ora12c\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Enterprise Vault\EVClient\;C:\Program Files (x86)\WebEx\Productivity Tools;C:\Users\singhgo\AppData\Local\Microsoft\WindowsApps;C:\Users\singhgo\anaconda3\;C:\Users\singhgo\anaconda3\Scripts
