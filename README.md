@@ -1,6 +1,15 @@
 # python-kafka
 Repo for python and kafka 
 
+### OS - Windows 10 Enterprise
+
+# Setup Docker for windows
+
+Download docker for windows
+
+Download winutils for windows and save it in %UserProfile%\venv\hadoop\bin and add its location to PATH from 
+https://github.com/steveloughran/winutils/blob/master/hadoop-2.7.1/bin/winutils.exe
+
 # Setup Kafka
 docker run -d --net=confluent --name=zookeeper -e ZOOKEEPER_CLIENT_PORT=2182 -p 2182:2182 confluentinc/cp-zookeeper:5.0.0
 
@@ -14,6 +23,9 @@ docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-topics --list 
 
 docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-topics --describe --topic browser-topic --zookeeper zookeeper:2182
 
+## To view the topic content
+docker run --net=confluent --rm confluentinc/cp-kafka:5.0.0 kafka-console-consumer --bootstrap-server kafka:9092 --topic browser-topic  --from-beginning
+
 # Setup Anaconda
 
 ## Install miniconda - it will create virtual env "%UserProfile%\venv" - install further packages in this virtual env
@@ -23,6 +35,7 @@ powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://repo.a
 
 start /wait "" mc3.exe /InstallationType=JustMe /AddToPath=0 /RegisterPython=0 /NoRegistry=0 /S /D=%UserProfile%\anaconda3
 
+### Activate virtual env
 %UserProfile%\anaconda3\Scripts\activate.bat
 
 conda install -y anaconda=5.0.1 conda-build _ipyw_jlab_nb_ext_conf
