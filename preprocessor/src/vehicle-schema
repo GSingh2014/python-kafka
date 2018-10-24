@@ -1,0 +1,33 @@
+{
+  "type": "record",
+  "name": "vehiclerecord",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "int"
+    },
+    {
+      "name": "vehicle_id",
+      "type": "int"
+    },
+    {
+      "name": "vehicle_speed",
+      "type": "float"
+    },
+    {
+      "name": "engine_speed",
+      "type": "int"
+    },
+    {
+      "name": "tire_pressure",
+      "type": "int"
+    },
+    {
+      "name": "direction",
+      "type": {
+        "type": "array",
+        "items": "float"
+      }
+    }
+  ]
+}
